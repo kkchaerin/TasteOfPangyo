@@ -1,13 +1,10 @@
 package com.example.tasteofpangyoapi.domain.categorytb;
 
-import com.example.tasteofpangyoapi.domain.restauranttb.RestaurantTb;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
