@@ -21,9 +21,11 @@ public class RestaurantTb {
     @Column(name="RESTAURANT_NAME")
     private String restaurantName;
 
-    @ManyToOne(cascade = CascadeType.MERGE, targetEntity = CategoryTb.class)
-    @JoinColumn(name = "CATRGORY_ID")
-    private CategoryTb category;
+//    @ManyToOne(cascade = CascadeType.MERGE, targetEntity = CategoryTb.class)
+//    @JoinColumn(name = "CATRGORY_ID")
+//    private CategoryTb category;
+    @Column(name="category_id")
+    private long categoryId;
 
     @Column(name="LOCATION")
     private String location;
@@ -38,7 +40,7 @@ public class RestaurantTb {
     public RestaurantTb(Long restaurantId, String restaurantName, CategoryTb category, String location, String latitude, String longitude){
         this.restaurantId = restaurantId;
         this.restaurantName = restaurantName;
-        this.category = category;
+//        this.category = category;
         this.location = location;
         this.latitude = latitude;
         this.longitude = longitude;

@@ -18,7 +18,7 @@ public class RestaurantController {
     @GetMapping(value="/restaurant-list")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public List<RestaurantListResponseDto> restaurantList(@PathVariable(required = false) Long temp){
-        return restaurantService.restaurantList();
+    public List<RestaurantListResponseDto> restaurantList(@RequestParam(value="categoryId", required = false) Long categoryId){
+        return restaurantService.restaurantList(categoryId);
     }
 }

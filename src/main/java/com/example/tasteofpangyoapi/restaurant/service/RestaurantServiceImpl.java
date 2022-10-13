@@ -14,7 +14,7 @@ public class RestaurantServiceImpl implements RestaurantService{
     RestaurantRepository restaurantRepository;
 
     @Override
-    public List<RestaurantListResponseDto> restaurantList() {
-        return restaurantRepository.restaurantList();
+    public List<RestaurantListResponseDto> restaurantList(Long categoryId) {
+        return restaurantRepository.restaurantList(categoryId);
     }
 }
