@@ -21,7 +21,7 @@ public class RestaurantRepositoryImpl implements RestaurantRepositoryForQueryDsl
     EntityManager em;
 
     @Override
-    public List<RestaurantListResponseDto> restaurantList(Long categoryId) {
+    public List<RestaurantListResponseDto> restaurantList(List<Long> categoryIdList) {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         QRestaurantTb qRestaurantTb = QRestaurantTb.restaurantTb;
@@ -29,11 +29,11 @@ public class RestaurantRepositoryImpl implements RestaurantRepositoryForQueryDsl
 
         BooleanBuilder builder = new BooleanBuilder();
 
-        if(!isNull(categoryId)){
-            builder.and(qRestaurantTb.categoryId.eq(categoryId));
+        if(categoryIdList.size() > 0){
+            builder.and(qRestaurantTb.categoryId.in(categoryIdList));
         }
 
-        List<RestaurantListResponseDto> list = queryFactory.select(
+        return queryFactory.select(
                 Projections.fields(
                                 RestaurantListResponseDto.class
                         ,qRestaurantTb.restaurantId
@@ -46,9 +46,6 @@ public class RestaurantRepositoryImpl implements RestaurantRepositoryForQueryDsl
                 .join(qCategoryTb)
                 .on(qRestaurantTb.categoryId.eq(qCategoryTb.categoryId))
                 .where(builder)
-                .fetch()
-                ;
-
-        return list;
+                .fetch();
     }
 }

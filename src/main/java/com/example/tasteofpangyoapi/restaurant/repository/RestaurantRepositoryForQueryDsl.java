@@ -5,5 +5,5 @@ import com.example.tasteofpangyoapi.restaurant.dto.RestaurantListResponseDto;
 import java.util.List;
 
 public interface RestaurantRepositoryForQueryDsl {
-    List<RestaurantListResponseDto> restaurantList(Long categoryId);
+    List<RestaurantListResponseDto> restaurantList(List<Long> categoryIdList);
 }

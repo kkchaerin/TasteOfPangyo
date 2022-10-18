@@ -1,5 +1,6 @@
 package com.example.tasteofpangyoapi.restaurant.controller;
 
+import com.example.tasteofpangyoapi.restaurant.dto.RestaurantListRequestDto;
 import com.example.tasteofpangyoapi.restaurant.dto.RestaurantListResponseDto;
 import com.example.tasteofpangyoapi.restaurant.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,10 @@ public class RestaurantController {
     @Autowired
     RestaurantService restaurantService;
 
-    @GetMapping(value="/restaurant-list")
+    @PostMapping(value="/restaurant-list")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public List<RestaurantListResponseDto> restaurantList(@RequestParam(value="categoryId", required = false) Long categoryId){
-        return restaurantService.restaurantList(categoryId);
+    public List<RestaurantListResponseDto> restaurantList(@RequestBody RestaurantListRequestDto requestDto){
+        return restaurantService.restaurantList(requestDto);
     }
 }

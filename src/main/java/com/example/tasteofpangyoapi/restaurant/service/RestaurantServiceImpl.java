@@ -1,5 +1,6 @@
 package com.example.tasteofpangyoapi.restaurant.service;
 
+import com.example.tasteofpangyoapi.restaurant.dto.RestaurantListRequestDto;
 import com.example.tasteofpangyoapi.restaurant.dto.RestaurantListResponseDto;
 import com.example.tasteofpangyoapi.restaurant.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,8 @@ public class RestaurantServiceImpl implements RestaurantService{
     RestaurantRepository restaurantRepository;
 
     @Override
-    public List<RestaurantListResponseDto> restaurantList(Long categoryId) {
-        return restaurantRepository.restaurantList(categoryId);
+    public List<RestaurantListResponseDto> restaurantList(RestaurantListRequestDto requestDto) {
+        List<Long> categoryIdList = requestDto.getCategoryIdList();
+        return restaurantRepository.restaurantList(categoryIdList);
     }
 }
